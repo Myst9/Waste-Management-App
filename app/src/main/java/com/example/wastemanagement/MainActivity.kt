@@ -1,13 +1,14 @@
 package com.example.wastemanagement
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.RadioButton
-import android.widget.RadioGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -41,6 +42,15 @@ class MainActivity : AppCompatActivity() {
                     Toast.LENGTH_SHORT
                 ).show()
             }
+            else if (!sell.isChecked && !buy.isChecked) {
+                AlertDialog.Builder(this)
+                    .setTitle("Select Option")
+                    .setMessage("Please select either 'Sell Waste' or 'Buy Waste'")
+                    .setPositiveButton("OK", DialogInterface.OnClickListener { dialog, _ ->
+                        dialog.dismiss()
+                    })
+                    .show()
+            }
             else {
                 auth.createUserWithEmailAndPassword(userEmail, userPassword)
                     .addOnCompleteListener(this) { task ->
@@ -62,8 +72,7 @@ class MainActivity : AppCompatActivity() {
                                         intent.putExtra("USER_ID", user.uid)
                                         startActivity(intent)
                                     }
-                                    .addOnFailureListener { e ->
-                                        // Handle Firestore data saving failure
+                                    .addOnFailureListener {
                                         Toast.makeText(
                                             this@MainActivity,
                                             "Failed to create user data in Firestore",
