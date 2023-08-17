@@ -158,6 +158,7 @@
             android:checked="false"
             android:padding="4dp"
             android:text="Sell Waste"
+
             android:textAlignment="center"
             android:textSize="20sp" />
 
@@ -169,6 +170,7 @@
             android:checked="false"
             android:padding="4dp"
             android:text="Buy Waste"
+
             android:textAlignment="center"
             android:textSize="20sp" />
 

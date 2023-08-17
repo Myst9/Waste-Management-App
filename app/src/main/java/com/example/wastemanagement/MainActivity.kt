@@ -3,6 +3,7 @@ package com.example.wastemanagement
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.RadioButton
@@ -23,19 +24,53 @@ class MainActivity : AppCompatActivity() {
         val signUp = findViewById<Button>(R.id.signup)
         val signInText = findViewById<TextView>(R.id.signinoption)
         var userName = ""
-        signUp.setOnClickListener {
-            userName = name.text.toString()
+//        var userEmail = ""
+//        var userNumber = ""
+//        var userPassword = ""
+        val radioGroup = findViewById<RadioGroup>(R.id.radioGroup)
+        fun checkButton(): String{
+            val radioId = radioGroup.checkedRadioButtonId
+
+            val radioButton = findViewById<RadioButton>(radioId)
+            return radioButton.text.toString()
+        }
+        signUp.setOnClickListener { userName = name.text.toString()
+//            userEmail = email.text.toString()
+//            userNumber = phoneNo.text.toString()
+//            userPassword = password.text.toString()
             if(userName==""){
                 Toast.makeText(
                     this@MainActivity,
                     "Enter your name!",
                     Toast.LENGTH_SHORT
-                ).show()
-            }else{
+                ).show()}
+//
+//                if(userEmail==""){
+//                    Toast.makeText(
+//                        this@MainActivity,
+//                        "Enter your email!",
+//                        Toast.LENGTH_SHORT
+//                    ).show()}
+//                    if(userNumber==""){
+//                        Toast.makeText(
+//                            this@MainActivity,
+//                            "Enter your phone number!",
+//                            Toast.LENGTH_SHORT
+//                        ).show()}
+//                        if(userPassword==""){
+//                            Toast.makeText(
+//                                this@MainActivity,
+//                                "Enter your Password!",
+//                                Toast.LENGTH_SHORT
+//                            ).show()}
+            else if(checkButton()=="Sell Waste"){
                 val intent = Intent(this, HomeActivity::class.java)
-                intent.putExtra("USER", userName)
                 startActivity(intent)
             }
+            //            else if(checkButton()=="Buy Waste") {
+//                        val intent = Intent(this, BuyActivity::class.java)
+//                        startActivity(intent)
+//                    }
         }
         signInText.setOnClickListener {
             val intent = Intent(this, SignInActivity::class.java)
