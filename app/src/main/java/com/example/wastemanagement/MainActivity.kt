@@ -1,76 +1,86 @@
 package com.example.wastemanagement
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var auth: FirebaseAuth
+    private lateinit var firestore: FirebaseFirestore
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
-        val name = findViewById<EditText>(R.id.name)
-        val email = findViewById<EditText>(R.id.email)
-        val password = findViewById<EditText>(R.id.password)
-        val phoneNo = findViewById<EditText>(R.id.phoneNo)
-        val sell = findViewById<RadioButton>(R.id.sellButton)
-        val buy = findViewById<RadioButton>(R.id.buyButton)
+
+        auth = FirebaseAuth.getInstance()
+        firestore = FirebaseFirestore.getInstance()
         val signUp = findViewById<Button>(R.id.signup)
         val signInText = findViewById<TextView>(R.id.signinoption)
-        var userName = ""
-//        var userEmail = ""
-//        var userNumber = ""
-//        var userPassword = ""
-        val radioGroup = findViewById<RadioGroup>(R.id.radioGroup)
-        fun checkButton(): String{
-            val radioId = radioGroup.checkedRadioButtonId
 
-            val radioButton = findViewById<RadioButton>(radioId)
-            return radioButton.text.toString()
-        }
-        signUp.setOnClickListener { userName = name.text.toString()
-//            userEmail = email.text.toString()
-//            userNumber = phoneNo.text.toString()
-//            userPassword = password.text.toString()
-            if(userName==""){
+        signUp.setOnClickListener {
+            val userName = findViewById<EditText>(R.id.name).text.toString()
+            val userEmail = findViewById<EditText>(R.id.email).text.toString()
+            val userPassword = findViewById<EditText>(R.id.password).text.toString()
+            val userPhone = findViewById<EditText>(R.id.phoneNo).text.toString()
+            val sell = findViewById<RadioButton>(R.id.sellButton)
+            val buy = findViewById<RadioButton>(R.id.buyButton)
+            val userType = if (sell.isChecked) "seller" else "buyer"
+
+            if (userName.isBlank() || userEmail.isBlank() || userPassword.isBlank() || userPhone.isBlank()) {
                 Toast.makeText(
                     this@MainActivity,
-                    "Enter your name!",
+                    "Please fill all the fields!",
                     Toast.LENGTH_SHORT
-                ).show()}
-//
-//                if(userEmail==""){
-//                    Toast.makeText(
-//                        this@MainActivity,
-//                        "Enter your email!",
-//                        Toast.LENGTH_SHORT
-//                    ).show()}
-//                    if(userNumber==""){
-//                        Toast.makeText(
-//                            this@MainActivity,
-//                            "Enter your phone number!",
-//                            Toast.LENGTH_SHORT
-//                        ).show()}
-//                        if(userPassword==""){
-//                            Toast.makeText(
-//                                this@MainActivity,
-//                                "Enter your Password!",
-//                                Toast.LENGTH_SHORT
-//                            ).show()}
-            else if(checkButton()=="Sell Waste"){
-                val intent = Intent(this, HomeActivity::class.java)
-                startActivity(intent)
+                ).show()
             }
-            //            else if(checkButton()=="Buy Waste") {
-//                        val intent = Intent(this, BuyActivity::class.java)
-//                        startActivity(intent)
-//                    }
+            else {
+                auth.createUserWithEmailAndPassword(userEmail, userPassword)
+                    .addOnCompleteListener(this) { task ->
+                        if (task.isSuccessful) {
+                            val user = auth.currentUser
+                            user?.let {
+                                val userData = hashMapOf(
+                                    "Name" to userName,
+                                    "Email" to userEmail,
+                                    "Phone" to userPhone
+                                )
+
+                                val userCollection = if (userType == "seller") "Sellers" else "Buyers"
+                                firestore.collection(userCollection)
+                                    .document(user.uid)
+                                    .set(userData)
+                                    .addOnSuccessListener {
+                                        val intent = Intent(this, HomeActivity::class.java)
+                                        intent.putExtra("USER_ID", user.uid)
+                                        startActivity(intent)
+                                    }
+                                    .addOnFailureListener { e ->
+                                        // Handle Firestore data saving failure
+                                        Toast.makeText(
+                                            this@MainActivity,
+                                            "Failed to create user data in Firestore",
+                                            Toast.LENGTH_SHORT
+                                        ).show()
+                                    }
+                            }
+                        } else {
+                            // Handle Authentication failure
+                            Toast.makeText(
+                                this@MainActivity,
+                                "Authentication failed: ${task.exception?.message}",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
+            }
         }
         signInText.setOnClickListener {
             val intent = Intent(this, SignInActivity::class.java)
