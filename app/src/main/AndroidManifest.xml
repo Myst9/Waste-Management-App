@@ -13,6 +13,15 @@
         android:theme="@style/Theme.WasteManagement"
         tools:targetApi="31">
         <activity
+            android:name=".HomeActivity2"
+            android:exported="false" />
+        <activity
+            android:name=".AddressActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BuyerActivity"
+            android:exported="false" />
+        <activity
             android:name=".SignInActivity"
             android:exported="false" />
         <activity

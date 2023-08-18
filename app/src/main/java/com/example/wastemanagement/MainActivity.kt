@@ -68,9 +68,14 @@ class MainActivity : AppCompatActivity() {
                                     .document(user.uid)
                                     .set(userData)
                                     .addOnSuccessListener {
-                                        val intent = Intent(this, HomeActivity::class.java)
+                                        if(userType=="seller")
+                                        {val intent = Intent(this, HomeActivity::class.java)
                                         intent.putExtra("USER_ID", user.uid)
-                                        startActivity(intent)
+                                        startActivity(intent)}
+                                        else
+                                        {val intent = Intent(this, BuyerActivity::class.java)
+                                            intent.putExtra("USER_ID", user.uid)
+                                            startActivity(intent)}
                                     }
                                     .addOnFailureListener {
                                         Toast.makeText(
