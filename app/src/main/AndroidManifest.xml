@@ -13,6 +13,7 @@
         android:theme="@style/Theme.WasteManagement"
         tools:targetApi="31">
         <activity
+
             android:name=".SplashScreen"
             android:exported="true" >
             <intent-filter>
@@ -21,6 +22,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".HomeActivity2"
+            android:exported="false" />
+        <activity
+            android:name=".AddressActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BuyerActivity"
+            android:exported="false" />
         <activity
             android:name=".SignInActivity"
             android:exported="false" />
