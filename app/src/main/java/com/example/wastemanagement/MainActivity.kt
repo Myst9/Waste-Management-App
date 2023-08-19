@@ -69,13 +69,18 @@ class MainActivity : AppCompatActivity() {
                                     .set(userData)
                                     .addOnSuccessListener {
                                         if(userType=="seller")
-                                        {val intent = Intent(this, HomeActivity::class.java)
-                                        intent.putExtra("USER_ID", user.uid)
-                                        startActivity(intent)}
-                                        else
-                                        {val intent = Intent(this, BuyerActivity::class.java)
+                                        {
+                                            val intent = Intent(this, HomeActivity::class.java)
                                             intent.putExtra("USER_ID", user.uid)
-                                            startActivity(intent)}
+                                            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                            startActivity(intent)
+                                        }
+                                        else
+                                        {
+                                            val intent = Intent(this, BuyerActivity::class.java)
+                                            intent.putExtra("USER_ID", user.uid)
+                                            startActivity(intent)
+                                        }
                                     }
                                     .addOnFailureListener {
                                         Toast.makeText(
