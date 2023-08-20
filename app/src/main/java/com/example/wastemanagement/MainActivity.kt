@@ -26,6 +26,13 @@ class MainActivity : AppCompatActivity() {
         val signUp = findViewById<Button>(R.id.signup)
         val signInText = findViewById<TextView>(R.id.signinoption)
 
+        if (auth.currentUser != null) {
+            // User is already signed in, navigate to HomeActivity
+            val intent = Intent(this, HomeActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+        }
+
         signUp.setOnClickListener {
             val userName = findViewById<EditText>(R.id.name).text.toString()
             val userEmail = findViewById<EditText>(R.id.email).text.toString()

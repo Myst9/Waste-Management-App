@@ -22,16 +22,16 @@ class HomeActivity2 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-        loadFragment(FirstFragment())
+        loadFragment(BuyerHomeFragment())
         bottomNav = findViewById(R.id.bottomNav) as BottomNavigationView
         bottomNav.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.home -> {
-                    loadFragment(FirstFragment())
+                    loadFragment(BuyerHomeFragment())
                     true
                 }
                 R.id.requests -> {
-                    loadFragment(SecondFragment())
+                    loadFragment(RequestsFragment())
                     true
                 }
                 R.id.profile -> {
