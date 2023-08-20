@@ -11,7 +11,7 @@ android {
     defaultConfig {
         applicationId = "com.example.wastemanagement"
         minSdk = 21
-        targetSdk = 34
+        targetSdk = 33
         versionCode = 1
         versionName = "1.0"
 
