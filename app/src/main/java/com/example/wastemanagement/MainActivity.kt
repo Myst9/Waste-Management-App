@@ -25,12 +25,39 @@ class MainActivity : AppCompatActivity() {
         firestore = FirebaseFirestore.getInstance()
         val signUp = findViewById<Button>(R.id.signup)
         val signInText = findViewById<TextView>(R.id.signinoption)
+        val sell = findViewById<RadioButton>(R.id.sellButton)
+        val userType = if (sell.isChecked) "seller" else "buyer"
+        val user = auth.currentUser
 
-        if (auth.currentUser != null) {
-            // User is already signed in, navigate to HomeActivity
-            val intent = Intent(this, HomeActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(intent)
+
+        if (user != null) {
+            setContentView(R.layout.activity_loading)
+            // Check the user's collection to determine user type
+            val sellerRef = firestore.collection("Sellers").document(user.uid)
+            val buyerRef = firestore.collection("Buyers").document(user.uid)
+
+            sellerRef.get().addOnSuccessListener { sellerDocument ->
+                if (sellerDocument.exists()) {
+                    val intent = Intent(this, HomeActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(intent)
+                } else {
+                    buyerRef.get().addOnSuccessListener { buyerDocument ->
+                        if (buyerDocument.exists()) {
+                            val intent = Intent(this, HomeActivity2::class.java)
+                            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                            startActivity(intent)
+                        } else {
+                            Toast.makeText(
+                                baseContext,
+                                "User data not found.",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
+                }
+            }
+            return  // Return here to prevent the sign-up page from showing
         }
 
         signUp.setOnClickListener {
