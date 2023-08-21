@@ -8,27 +8,30 @@
 
     <TextView
         android:id="@+id/textView18"
-        android:layout_width="272dp"
-        android:layout_height="54dp"
-        android:text="What type of waste do want to sell?"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SELECT WASTE TYPE TO SELL:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.381"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.11" />
+        app:layout_constraintVertical_bias="0.057"
+        tools:visibility="visible" />
 
     <RadioGroup
         android:id="@+id/radioGroup3"
-        android:layout_width="343dp"
-        android:layout_height="463dp"
+        android:layout_width="354dp"
+        android:layout_height="485dp"
         android:layout_centerInParent="true"
         android:layout_gravity="center"
-        android:layout_marginBottom="112dp"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView18"
+        app:layout_constraintVertical_bias="0.082">
 
         <RadioButton
             android:id="@+id/sellplastic"
@@ -39,13 +42,16 @@
             android:padding="4dp"
             android:text="Plastic"
             android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
             android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/textView19"
-            android:layout_width="196dp"
+        <EditText
+            android:id="@+id/editTextText7"
+            android:layout_width="198dp"
             android:layout_height="wrap_content"
-            android:hint="Enter Approximate weight:" />
+            android:ems="10"
+            android:hint="enter approximate weight"
+            android:inputType="text" />
 
         <RadioButton
             android:id="@+id/sellpaper"
@@ -58,11 +64,13 @@
             android:textAlignment="center"
             android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/textView20"
-            android:layout_width="203dp"
+        <EditText
+            android:id="@+id/editTextText8"
+            android:layout_width="199dp"
             android:layout_height="wrap_content"
-            android:hint="Enter Approximate weight:" />
+            android:ems="10"
+            android:hint="enter approximate weight"
+            android:inputType="text" />
 
         <RadioButton
             android:id="@+id/sellcardboard"
@@ -75,11 +83,13 @@
             android:textAlignment="center"
             android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/textView21"
-            android:layout_width="202dp"
+        <EditText
+            android:id="@+id/editTextText9"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:hint="Enter Approximate weight:" />
+            android:ems="10"
+            android:hint="enter approximate weight"
+            android:inputType="text" />
 
         <RadioButton
             android:id="@+id/sellglass"
@@ -92,11 +102,13 @@
             android:textAlignment="center"
             android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/textView22"
-            android:layout_width="204dp"
+        <EditText
+            android:id="@+id/editTextText10"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:hint="Enter Approximate weight:" />
+            android:ems="10"
+            android:hint="enter approximate weight"
+            android:inputType="text" />
 
         <RadioButton
             android:id="@+id/electronicwaste"
@@ -109,11 +121,13 @@
             android:textAlignment="center"
             android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/textView23"
-            android:layout_width="202dp"
+        <EditText
+            android:id="@+id/editTextText11"
+            android:layout_width="196dp"
             android:layout_height="wrap_content"
-            android:hint="Enter Approximate weight:" />
+            android:ems="10"
+            android:hint="enter approximate weight"
+            android:inputType="text" />
 
     </RadioGroup>
 
