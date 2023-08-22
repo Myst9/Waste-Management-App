@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment
 import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 
-class FourthFragment : Fragment() {
+class UserSettingsFragment : Fragment() {
 
     private lateinit var auth: FirebaseAuth
 
@@ -20,7 +20,7 @@ class FourthFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_fourth, container, false)
+        return inflater.inflate(R.layout.fragment_user_settings, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

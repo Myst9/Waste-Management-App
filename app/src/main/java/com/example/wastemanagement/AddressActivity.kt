@@ -29,7 +29,7 @@ class AddressActivity : AppCompatActivity() {
                 ).show()
             }
                 else{
-                    val intent = Intent(this, HomeActivity2::class.java)
+                    val intent = Intent(this, BuyerHomeActivity::class.java)
                     startActivity(intent)
                 }
 

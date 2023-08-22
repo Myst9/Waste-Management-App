@@ -24,6 +24,7 @@ class SignInActivity : AppCompatActivity() {
 
         val signIn = findViewById<Button>(R.id.signin)
         val forgotPassword = findViewById<TextView>(R.id.forgotPassword)
+        val register = findViewById<TextView>(R.id.tvRegister)
 
         signIn.setOnClickListener {
             val email = findViewById<EditText>(R.id.email).text.toString()
@@ -46,7 +47,7 @@ class SignInActivity : AppCompatActivity() {
                             firestore.collection("Sellers").document(user.uid).get()
                                 .addOnSuccessListener { sellerDocument ->
                                     if (sellerDocument.exists()) {
-                                        val intent = Intent(this, HomeActivity::class.java)
+                                        val intent = Intent(this, SellerHomeActivity::class.java)
                                         intent.putExtra("USER_ID", user.uid)
                                         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                                         startActivity(intent)
@@ -54,7 +55,7 @@ class SignInActivity : AppCompatActivity() {
                                         firestore.collection("Buyers").document(user.uid).get()
                                             .addOnSuccessListener { buyerDocument ->
                                                 if (buyerDocument.exists()) {
-                                                    val intent = Intent(this, HomeActivity2::class.java)
+                                                    val intent = Intent(this, BuyerHomeActivity::class.java)
                                                     intent.putExtra("USER_ID", user.uid)
                                                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                                                     startActivity(intent)
@@ -77,6 +78,11 @@ class SignInActivity : AppCompatActivity() {
 
         forgotPassword.setOnClickListener {
             // ... (your existing forgot password code)
+        }
+
+        register.setOnClickListener {
+            val intent = Intent(this,MainActivity::class.java)
+            startActivity(intent)
         }
     }
 }

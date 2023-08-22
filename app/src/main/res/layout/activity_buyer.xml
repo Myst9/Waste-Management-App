@@ -5,239 +5,261 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="71dp"
-        android:layout_height="36dp"
-        android:layout_marginBottom="260dp"
-        android:text="Base Price:50/Kg"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.02"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="71dp"
-        android:layout_height="36dp"
-        android:layout_marginBottom="124dp"
-        android:text="Base Price:50/Kg"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.032"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/editTextText4"
-        android:layout_width="255dp"
-        android:layout_height="57dp"
-        android:ems="10"
-        android:hint="Enter  the price"
-        android:inputType="text"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/editTextText3"
-        android:layout_width="255dp"
-        android:layout_height="57dp"
-        android:ems="10"
-        android:hint="Enter  the price"
-        android:inputType="text"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.525"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.718" />
-
-    <EditText
-        android:id="@+id/editTextText5"
-        android:layout_width="255dp"
-        android:layout_height="57dp"
-        android:ems="10"
-        android:hint="Enter  the price"
-        android:inputType="text"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.525"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.927" />
+    <!-- Other UI elements as needed -->
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Select the type of  waste you want to buy"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.455"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.088" />
-
-    <RadioGroup
-        android:id="@+id/radioGroup1"
-        android:layout_width="264dp"
-        android:layout_height="78dp"
-        android:layout_centerInParent="true"
-        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
         android:gravity="center"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="Select the type of waste you want to buy"
+        android:textAlignment="center"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.544"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.393">
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <RadioButton
-            android:id="@+id/cardboard"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:checked="false"
-            android:padding="4dp"
-            android:text="Cardboard"
-            android:textAlignment="center"
-            android:textSize="20sp" />
-
-    </RadioGroup>
-
-    <RadioGroup
-        android:id="@+id/radioGroup2"
-        android:layout_width="262dp"
-        android:layout_height="73dp"
-        android:layout_centerInParent="true"
-        android:layout_gravity="center"
-        android:gravity="center"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <!-- Plastic waste type -->
+    <CheckBox
+        android:id="@+id/plastic_checkbox"
+        android:layout_width="154dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="12dp"
+        android:checked="false"
+        android:text="Plastic"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.55"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.838">
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
-
-        <RadioButton
-            android:id="@+id/paper"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:checked="false"
-            android:padding="4dp"
-            android:text="Paper"
-
-            android:textAlignment="center"
-            android:textSize="20sp" />
-
-    </RadioGroup>
-
-    <RadioGroup
-        android:id="@+id/radioGroup3"
-        android:layout_width="257dp"
-        android:layout_height="68dp"
-        android:layout_centerInParent="true"
-        android:layout_gravity="center"
-        android:gravity="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.519"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.159">
-
-
-        <RadioButton
-            android:id="@+id/glass"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:checked="false"
-            android:padding="4dp"
-            android:text="Glass"
-
-            android:textAlignment="center"
-            android:textSize="20sp" />
-    </RadioGroup>
-
-    <RadioGroup
-        android:id="@+id/radioGroup4"
-        android:layout_width="274dp"
-        android:layout_height="73dp"
-        android:layout_centerInParent="true"
-        android:layout_gravity="center"
-        android:gravity="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.583"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.624">
-
-        <RadioButton
-            android:id="@+id/plastic"
-            android:layout_width="204dp"
-            android:layout_height="wrap_content"
-            android:checked="false"
-            android:padding="4dp"
-            android:text="Plastic"
-            android:textAlignment="center"
-            android:textSize="20sp" />
-    </RadioGroup>
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
+    <TextView
+        android:id="@+id/plastic_price_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="20dp" />
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="4dp"
+        android:text="Enter Price per Kg:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/plastic_checkbox" />
 
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="71dp"
-        android:layout_height="36dp"
-        android:layout_marginBottom="564dp"
-        android:text="Base Price:50/Kg"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.02"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="71dp"
-        android:layout_height="36dp"
-        android:layout_marginBottom="416dp"
-        android:text="Base Price:50/Kg"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+    <!-- Paper waste type -->
 
     <EditText
-        android:id="@+id/editTextText2"
-        android:layout_width="255dp"
-        android:layout_height="57dp"
-        android:ems="10"
-        android:hint="Enter  the price"
-        android:inputType="text"
+        android:id="@+id/plastic_price_edit"
+        android:layout_width="185dp"
+        android:layout_height="48dp"
+        android:hint="Enter price"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.525"
+        app:layout_constraintHorizontal_bias="0.763"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView6"
+        app:layout_constraintVertical_bias="0.123" />
+
+    <CheckBox
+        android:id="@+id/paper_checkbox"
+        android:layout_width="150dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="12dp"
+        android:checked="false"
+        android:text="Paper"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.268" />
+        app:layout_constraintVertical_bias="0.199" />
+
+    <TextView
+        android:id="@+id/paper_price_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="4dp"
+        android:text="Enter Price per Kg:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/paper_checkbox" />
+
+    <!-- Cardboard waste type -->
+
+    <!-- Metal waste type -->
+
+    <EditText
+        android:id="@+id/paper_price_edit"
+        android:layout_width="182dp"
+        android:layout_height="48dp"
+        android:hint="Enter price"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.794"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.289" />
+
+    <CheckBox
+        android:id="@+id/metal_checkbox"
+        android:layout_width="158dp"
+        android:layout_height="48dp"
+        android:checked="false"
+        android:text="Metal"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView6"
+        app:layout_constraintVertical_bias="0.343" />
+
+    <TextView
+        android:id="@+id/metal_price_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="4dp"
+        android:text="Enter Price per Kg:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/metal_checkbox" />
+
+    <!-- Glass waste type -->
+
+    <EditText
+        android:id="@+id/metal_price_edit"
+        android:layout_width="196dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="4dp"
+        android:hint="Enter price"
+        app:layout_constraintBottom_toTopOf="@+id/glass_checkbox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.823"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/metal_checkbox"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <CheckBox
+        android:id="@+id/glass_checkbox"
+        android:layout_width="154dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="12dp"
+        android:checked="false"
+        android:text="Glass"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/metal_price_edit" />
+
+    <TextView
+        android:id="@+id/glass_price_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="4dp"
+        android:text="Enter Price per Kg:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/glass_checkbox" />
+
+    <!-- Wood waste type -->
+
+    <EditText
+        android:id="@+id/glass_price_edit"
+        android:layout_width="209dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="4dp"
+        android:hint="Enter price"
+        app:layout_constraintBottom_toTopOf="@+id/wood_checkbox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.871"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/glass_checkbox"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <CheckBox
+        android:id="@+id/wood_checkbox"
+        android:layout_width="150dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="12dp"
+        android:checked="false"
+        android:text="Wood"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/glass_price_edit" />
+
+    <TextView
+        android:id="@+id/wood_price_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="4dp"
+        android:text="Enter Price per Kg:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wood_checkbox" />
+
+    <!-- Organic waste type -->
+
+    <EditText
+        android:id="@+id/wood_price_edit"
+        android:layout_width="189dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="4dp"
+        android:hint="Enter price"
+        app:layout_constraintBottom_toTopOf="@+id/organic_checkbox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.797"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wood_checkbox"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <CheckBox
+        android:id="@+id/organic_checkbox"
+        android:layout_width="167dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="12dp"
+        android:checked="false"
+        android:text="Organic"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wood_price_edit" />
+
+    <TextView
+        android:id="@+id/organic_price_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="4dp"
+        android:text="Enter Price per Kg:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/organic_checkbox" />
+
+    <!-- Next button -->
+
+    <EditText
+        android:id="@+id/organic_price_edit"
+        android:layout_width="178dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="4dp"
+        android:hint="Enter price"
+        app:layout_constraintBottom_toTopOf="@+id/next_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/organic_checkbox"
+        app:layout_constraintVertical_bias="0.5" />
 
     <Button
-        android:id="@+id/next"
-        android:layout_width="163dp"
-        android:layout_height="48dp"
+        android:id="@+id/next_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:text="Next"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.989" />
+        app:layout_constraintVertical_bias="0.976" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
