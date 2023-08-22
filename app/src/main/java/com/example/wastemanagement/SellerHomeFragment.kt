@@ -13,7 +13,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
 
-class FirstFragment : Fragment() {
+class SellerHomeFragment : Fragment() {
 
 
     override fun onCreateView(
@@ -21,7 +21,7 @@ class FirstFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_first, container, false)
+        return inflater.inflate(R.layout.fragment_seller_home, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -47,7 +47,7 @@ class FirstFragment : Fragment() {
                 val userName = documentSnapshot.getString("Name")
                 if (!userName.isNullOrEmpty()) {
                     val greeting = "Hi $userName!"
-                    Log.d("FirstFragment", "Greeting: $greeting")
+                    Log.d("SellerHomeFragment", "Greeting: $greeting")
 
                     // Update UI on the main thread
                     activity?.runOnUiThread {

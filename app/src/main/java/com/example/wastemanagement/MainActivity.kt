@@ -38,13 +38,13 @@ class MainActivity : AppCompatActivity() {
 
             sellerRef.get().addOnSuccessListener { sellerDocument ->
                 if (sellerDocument.exists()) {
-                    val intent = Intent(this, HomeActivity::class.java)
+                    val intent = Intent(this, SellerHomeActivity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(intent)
                 } else {
                     buyerRef.get().addOnSuccessListener { buyerDocument ->
                         if (buyerDocument.exists()) {
-                            val intent = Intent(this, HomeActivity2::class.java)
+                            val intent = Intent(this, BuyerHomeActivity::class.java)
                             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                             startActivity(intent)
                         } else {
@@ -104,7 +104,7 @@ class MainActivity : AppCompatActivity() {
                                     .addOnSuccessListener {
                                         if(userType=="seller")
                                         {
-                                            val intent = Intent(this, HomeActivity::class.java)
+                                            val intent = Intent(this, SellerHomeActivity::class.java)
                                             intent.putExtra("USER_ID", user.uid)
                                             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                                             startActivity(intent)

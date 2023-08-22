@@ -13,7 +13,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
 
-class ThirdFragment : Fragment() {
+class UserProfileFragment : Fragment() {
 
     private var userType: String = "Buyers"
     private val auth = FirebaseAuth.getInstance()
@@ -25,7 +25,7 @@ class ThirdFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_third, container, false)
+        val view = inflater.inflate(R.layout.fragment_user_profile, container, false)
         val edit = view.findViewById<FloatingActionButton>(R.id.floatingActionButton2)
         val btnSave = view.findViewById<Button>(R.id.btnSave)
 
