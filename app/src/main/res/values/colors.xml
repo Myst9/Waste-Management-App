@@ -2,4 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="appPink">#FF165D</color>
+    <color name="yellow">#eb9f34</color>
+    <color name="orange">#FF5733</color>
+    <color name="skyblue">#3498DB</color>
+    <color name="lightyellow">#DABC44</color>
 </resources>

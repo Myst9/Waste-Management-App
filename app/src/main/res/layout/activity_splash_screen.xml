@@ -10,9 +10,8 @@
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/wastecontrolinc"
-        tools:layout_editor_absoluteX="-34dp"
-        tools:layout_editor_absoluteY="359dp" />
+        android:src="@drawable/splashbg"
+        android:scaleType="centerCrop" />
 
     <ProgressBar
         android:layout_width="wrap_content"

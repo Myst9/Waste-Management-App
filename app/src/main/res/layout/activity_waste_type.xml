@@ -4,116 +4,123 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg"
     tools:context=".WasteTypeActivity">
 
     <TextView
         android:id="@+id/textView18"
-        android:layout_width="272dp"
-        android:layout_height="54dp"
-        android:text="What type of waste do want to sell?"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select the waste you want to recycle"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/radioGroup"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.381"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.11" />
+        app:layout_constraintVertical_bias="0.05"
+        tools:visibility="visible" />
 
     <RadioGroup
-        android:id="@+id/radioGroup3"
-        android:layout_width="343dp"
-        android:layout_height="463dp"
-        android:layout_centerInParent="true"
-        android:layout_gravity="center"
-        android:layout_marginBottom="112dp"
-        android:gravity="center"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/radioGroup"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/confirm_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView18">
 
+        <!-- Plastic -->
         <RadioButton
             android:id="@+id/sellplastic"
-            android:layout_width="200dp"
+            android:layout_width="102dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:checked="false"
-            android:padding="4dp"
-            android:text="Plastic"
-            android:textAlignment="center"
-            android:textSize="20sp" />
+            android:text="Plastic" />
 
-        <TextView
-            android:id="@+id/textView19"
-            android:layout_width="196dp"
+        <EditText
+            android:id="@+id/plasticWeight"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter Approximate weight:" />
+            android:hint="enter approximate weight"
+            android:inputType="text"
+            android:minHeight="48dp" />
 
+        <!-- Paper -->
         <RadioButton
             android:id="@+id/sellpaper"
-            android:layout_width="200dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:checked="false"
-            android:padding="4dp"
-            android:text="Paper"
-            android:textAlignment="center"
-            android:textSize="20sp" />
+            android:text="Paper" />
 
-        <TextView
-            android:id="@+id/textView20"
-            android:layout_width="203dp"
+        <EditText
+            android:id="@+id/paperWeight"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter Approximate weight:" />
+            android:hint="enter approximate weight"
+            android:inputType="text"
+            android:minHeight="48dp" />
 
-        <RadioButton
-            android:id="@+id/sellcardboard"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:checked="false"
-            android:padding="4dp"
-            android:text="Cardboard"
-            android:textAlignment="center"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/textView21"
-            android:layout_width="202dp"
-            android:layout_height="wrap_content"
-            android:hint="Enter Approximate weight:" />
-
+        <!-- Glass -->
         <RadioButton
             android:id="@+id/sellglass"
-            android:layout_width="200dp"
+            android:layout_width="91dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:checked="false"
-            android:padding="4dp"
-            android:text="Glass"
-            android:textAlignment="center"
-            android:textSize="20sp" />
+            android:text="Glass" />
 
-        <TextView
-            android:id="@+id/textView22"
-            android:layout_width="204dp"
+        <EditText
+            android:id="@+id/glassWeight"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter Approximate weight:" />
+            android:hint="enter approximate weight"
+            android:inputType="text"
+            android:minHeight="48dp" />
 
+        <!-- Metal -->
         <RadioButton
-            android:id="@+id/electronicwaste"
-            android:layout_width="200dp"
+            android:id="@+id/sellmetal"
+            android:layout_width="88dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:checked="false"
-            android:padding="4dp"
-            android:text="Electronic Waste"
-            android:textAlignment="center"
-            android:textSize="20sp" />
+            android:text="Metal" />
 
-        <TextView
-            android:id="@+id/textView23"
-            android:layout_width="202dp"
+        <EditText
+            android:id="@+id/metalWeight"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter Approximate weight:" />
+            android:hint="enter approximate weight"
+            android:inputType="text"
+            android:minHeight="48dp" />
+
+        <!-- Organic -->
+        <RadioButton
+            android:id="@+id/sellorganic"
+            android:layout_width="106dp"
+            android:layout_height="wrap_content"
+            android:text="Organic" />
+
+        <EditText
+            android:id="@+id/organicWeight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="enter approximate weight"
+            android:inputType="text"
+            android:minHeight="48dp" />
+
+        <!-- Wood -->
+        <RadioButton
+            android:id="@+id/sellwood"
+            android:layout_width="91dp"
+            android:layout_height="48dp"
+            android:text="Wood" />
+
+        <EditText
+            android:id="@+id/woodWeight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="enter approximate weight"
+            android:inputType="text"
+            android:minHeight="48dp" />
 
     </RadioGroup>
 
@@ -124,8 +131,8 @@
         android:text="Confirm"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.464"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.935" />
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup"
+        app:layout_constraintVertical_bias="0.05" />
 </androidx.constraintlayout.widget.ConstraintLayout>
