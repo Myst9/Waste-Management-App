@@ -53,20 +53,26 @@ class RequestAdapter : ListAdapter<Request, RequestAdapter.RequestViewHolder>(Re
                 buyerDetailsTextView.text = buyerDetailsText
             }
 
+            val requestRef = firestore.collection("requests").document(request.documentId)
+            requestRef.get().addOnSuccessListener { requestDocument ->
+                val selectedWasteType = requestDocument.getString("selectedWasteType")
+                val Weight = requestDocument.getDouble("weight")
+
+                selectedWasteTypeTextView.text = "Selected Waste Type: $selectedWasteType\n"+"Weight: $Weight"
+            }
             // Fetch seller details
             val sellerRef = firestore.collection("Sellers").document(sellerId)
             sellerRef.get().addOnSuccessListener { sellerDocument ->
                 val sellerName = sellerDocument.getString("Name")
                 val sellerEmail = sellerDocument.getString("Email")
                 val sellerPhone = sellerDocument.getString("Phone")
-                val selectedWasteType = sellerDocument.getString("selectedWasteType")
 
                 val sellerDetailsText = "Seller: $sellerName\n" +
                         "Email: $sellerEmail\n" +
                         "Phone: $sellerPhone"
 
                 sellerDetailsTextView.text = sellerDetailsText
-                selectedWasteTypeTextView.text = "Selected Waste Type: $selectedWasteType"
+
             }
         }
     }

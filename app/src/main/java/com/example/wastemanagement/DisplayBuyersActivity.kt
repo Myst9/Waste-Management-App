@@ -66,9 +66,6 @@ class DisplayBuyersActivity : AppCompatActivity() {
                                                 buyersList.add(buyer)
                                             }
                                         }
-//                                        if(buyersList.isEmpty()){
-//                                            Toast.makeText(this, "No buyers found for the selected criteria.", Toast.LENGTH_SHORT).show()
-//                                        }
                                     } else {
                                         Toast.makeText(this, "No buyers found in the nearest locations", Toast.LENGTH_SHORT).show()
                                         Log.d("DisplayBuyersActivity", "Missing selectedWasteTypesMap or Pincode")
@@ -94,6 +91,7 @@ class DisplayBuyersActivity : AppCompatActivity() {
             Toast.makeText(this, "User not authenticated", Toast.LENGTH_SHORT).show()
         }
     }
+
     fun sendRequest(view: View) {
         val selectedBuyer = adapter.getSelectedBuyer()
 
@@ -103,48 +101,54 @@ class DisplayBuyersActivity : AppCompatActivity() {
 
             if (currentUserId != null) {
                 val selectedWasteType = intent.getStringExtra("selectedWasteType")
-                val weight = intent.getStringExtra("weight")
+                val weight = intent.getDoubleExtra("weight", 0.0)
 
-                val request = hashMapOf(
-                    "sellerId" to currentUserId,
-                    "buyerId" to selectedBuyer.id,
-                    "selectedWasteType" to selectedWasteType,
-                    "weight" to weight,
-                    "status" to "pending"
-                )
+//                val weight = weightString?.toDoubleOrNull()
 
-                firestore.collection("requests")
-                    .add(request)
-                    .addOnSuccessListener { documentReference ->
-                        // Get the generated document ID
-                        val requestId = documentReference.id
+                if (weight != null) {
+                    val request = hashMapOf(
+                        "sellerId" to currentUserId,
+                        "buyerId" to selectedBuyer.id,
+                        "selectedWasteType" to selectedWasteType,
+                        "weight" to weight,
+                        "status" to "pending"
+                    )
 
-                        // Update the request document to include the documentId
-                        firestore.collection("requests")
-                            .document(requestId)
-                            .update("documentId", requestId)
-                            .addOnSuccessListener {
-                                // Create a Request object using the retrieved data
-                                val requestObj = Request(
-                                    documentId = requestId,
-                                    buyerId = selectedBuyer.id,
-                                    sellerId = currentUserId,
-                                    status = "pending"
-                                )
-                                val buyerName = selectedBuyer.name
-                                Toast.makeText(this, "Request sent to $buyerName", Toast.LENGTH_SHORT).show()
-                                val intent = Intent(this@DisplayBuyersActivity, SellerHomeActivity::class.java)
-                                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                                startActivity(intent)
-                                finish()
-                            }
-                            .addOnFailureListener { e ->
-                                Toast.makeText(this, "Error updating document: ${e.message}", Toast.LENGTH_SHORT).show()
-                            }
-                    }
-                    .addOnFailureListener { e ->
-                        Toast.makeText(this, "Error sending request: ${e.message}", Toast.LENGTH_SHORT).show()
-                    }
+                    firestore.collection("requests")
+                        .add(request)
+                        .addOnSuccessListener { documentReference ->
+                            // Get the generated document ID
+                            val requestId = documentReference.id
+
+                            // Update the request document to include the documentId
+                            firestore.collection("requests")
+                                .document(requestId)
+                                .update("documentId", requestId)
+                                .addOnSuccessListener {
+                                    val requestObj = Request(
+                                        documentId = requestId,
+                                        buyerId = selectedBuyer.id,
+                                        sellerId = currentUserId,
+                                        status = "pending",
+                                        weight = weight
+                                    )
+                                    val buyerName = selectedBuyer.name
+                                    Toast.makeText(this, "Request sent to $buyerName", Toast.LENGTH_SHORT).show()
+                                    val intent = Intent(this@DisplayBuyersActivity, SellerHomeActivity::class.java)
+                                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                    startActivity(intent)
+                                    finish()
+                                }
+                                .addOnFailureListener { e ->
+                                    Toast.makeText(this, "Error updating document: ${e.message}", Toast.LENGTH_SHORT).show()
+                                }
+                        }
+                        .addOnFailureListener { e ->
+                            Toast.makeText(this, "Error sending request: ${e.message}", Toast.LENGTH_SHORT).show()
+                        }
+                } else {
+                    Toast.makeText(this, "Invalid weight format", Toast.LENGTH_SHORT).show()
+                }
             } else {
                 Toast.makeText(this, "User not authenticated", Toast.LENGTH_SHORT).show()
             }
@@ -153,5 +157,3 @@ class DisplayBuyersActivity : AppCompatActivity() {
         }
     }
 }
-
-

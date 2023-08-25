@@ -34,6 +34,8 @@ class RequestAdapterBuyer : ListAdapter<Request, RequestAdapterBuyer.RequestView
             titleTextView.text = "Request ID: ${request.documentId}" // Display Request ID
             statusTextView.text = "Status: ${request.status}"
 
+            val selectedWasteType = request.selectedWasteType // Access the selected waste type directly from the Request object
+
             val sellerId = request.sellerId
             val sellerRef = firestore.collection("Sellers").document(sellerId)
 
@@ -45,7 +47,6 @@ class RequestAdapterBuyer : ListAdapter<Request, RequestAdapterBuyer.RequestView
                 val sellerAddress2 = sellerDocument.getString("AddressLine2")
                 val sellerCity = sellerDocument.getString("City")
                 val sellerPincode = sellerDocument.getString("Pincode")
-                val selectedWasteType = sellerDocument.getString("selectedWasteType")
 
                 val sellerDetailsText = "Seller: $sellerName\n" +
                         "Email: $sellerEmail\n" +

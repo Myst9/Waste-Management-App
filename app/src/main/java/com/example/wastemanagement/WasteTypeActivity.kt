@@ -27,13 +27,14 @@ class WasteTypeActivity : AppCompatActivity() {
 
         button.setOnClickListener {
             val selectedWasteType: String
-            var weight: String = ""
+            var weightString: String
+            var weight: Double = 0.0
 
             when {
                 findViewById<RadioButton>(R.id.sellplastic).isChecked -> {
                     selectedWasteType = "Plastic"
-                    weight = findViewById<EditText>(R.id.plasticWeight).text.toString()
-                    if (weight.isBlank()) {
+                    weightString = findViewById<EditText>(R.id.plasticWeight).text.toString()
+                    if (weightString.isBlank()) {
                         // Weight not entered, show a Toast message
                         Toast.makeText(this, "Please enter the weight", Toast.LENGTH_SHORT).show()
                         return@setOnClickListener
@@ -43,8 +44,8 @@ class WasteTypeActivity : AppCompatActivity() {
                 }
                 findViewById<RadioButton>(R.id.sellpaper).isChecked -> {
                     selectedWasteType = "Paper"
-                    weight = findViewById<EditText>(R.id.paperWeight).text.toString()
-                    if (weight.isBlank()) {
+                    weightString = findViewById<EditText>(R.id.paperWeight).text.toString()
+                    if (weightString.isBlank()) {
                         // Weight not entered, show a Toast message
                         Toast.makeText(this, "Please enter the weight", Toast.LENGTH_SHORT).show()
                         return@setOnClickListener
@@ -54,8 +55,8 @@ class WasteTypeActivity : AppCompatActivity() {
                 }
                 findViewById<RadioButton>(R.id.sellorganic).isChecked -> {
                     selectedWasteType = "Organic"
-                    weight = findViewById<EditText>(R.id.organicWeight).text.toString()
-                    if (weight.isBlank()) {
+                    weightString = findViewById<EditText>(R.id.organicWeight).text.toString()
+                    if (weightString.isBlank()) {
                         // Weight not entered, show a Toast message
                         Toast.makeText(this, "Please enter the weight", Toast.LENGTH_SHORT).show()
                         return@setOnClickListener
@@ -65,8 +66,8 @@ class WasteTypeActivity : AppCompatActivity() {
                 }
                 findViewById<RadioButton>(R.id.sellglass).isChecked -> {
                     selectedWasteType = "Glass"
-                    weight = findViewById<EditText>(R.id.glassWeight).text.toString()
-                    if (weight.isBlank()) {
+                    weightString = findViewById<EditText>(R.id.glassWeight).text.toString()
+                    if (weightString.isBlank()) {
                         // Weight not entered, show a Toast message
                         Toast.makeText(this, "Please enter the weight", Toast.LENGTH_SHORT).show()
                         return@setOnClickListener
@@ -76,8 +77,8 @@ class WasteTypeActivity : AppCompatActivity() {
                 }
                 findViewById<RadioButton>(R.id.sellmetal).isChecked -> {
                     selectedWasteType = "Metal"
-                    weight = findViewById<EditText>(R.id.metalWeight).text.toString()
-                    if (weight.isBlank()) {
+                    weightString = findViewById<EditText>(R.id.metalWeight).text.toString()
+                    if (weightString.isBlank()) {
                         // Weight not entered, show a Toast message
                         Toast.makeText(this, "Please enter the weight", Toast.LENGTH_SHORT).show()
                         return@setOnClickListener
@@ -87,8 +88,8 @@ class WasteTypeActivity : AppCompatActivity() {
                 }
                 findViewById<RadioButton>(R.id.sellwood).isChecked -> {
                     selectedWasteType = "Wood"
-                    weight = findViewById<EditText>(R.id.woodWeight).text.toString()
-                    if (weight.isBlank()) {
+                    weightString = findViewById<EditText>(R.id.woodWeight).text.toString()
+                    if (weightString.isBlank()) {
                         // Weight not entered, show a Toast message
                         Toast.makeText(this, "Please enter the weight", Toast.LENGTH_SHORT).show()
                         return@setOnClickListener
@@ -103,9 +104,16 @@ class WasteTypeActivity : AppCompatActivity() {
                 }
             }
 
-            println("Assigned weight value: $weight")
+            try {
+                weight = weightString.toDouble()
+            } catch (e: NumberFormatException) {
+                // Handle the case where weightString couldn't be converted to Double
+                Toast.makeText(this, "Invalid weight format", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
 
             println("Assigned weight value: $weight")
+
 
             val currentUser = FirebaseAuth.getInstance().currentUser
             val userId = currentUser?.uid
@@ -120,7 +128,7 @@ class WasteTypeActivity : AppCompatActivity() {
                     ).addOnSuccessListener {
                         val intent = Intent(this, DisplayBuyersActivity::class.java)
                         intent.putExtra("selectedWasteType", selectedWasteType)
-                        intent.putExtra("weight", weight?.toDouble())
+                        intent.putExtra("weight", weight)
                         startActivity(intent)
                     }.addOnFailureListener { e ->
                         Toast.makeText(this, "Error: ${e.message}", Toast.LENGTH_SHORT).show()

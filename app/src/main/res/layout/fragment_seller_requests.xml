@@ -54,7 +54,7 @@
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="4dp"
         android:backgroundTint="#FF165D"
-        android:text="New Requests"
+        android:text="Send a request"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.461"
