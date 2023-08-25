@@ -1,68 +1,39 @@
-# Waste Management App
-The Waste Management App is a comprehensive project aimed at effectively managing and optimizing waste collection. This project is designed to streamline waste management operations for municipalities, companies, and communities, leading to improved environmental sustainability and resource utilization. The theme of the project is `Sustainable Cities and Communities` from one of goals of `SDG`
+# EcoPick App
+EcoPick is a waste management app that connects waste producers with nearby recyclers. Aligned with the Sustainable Development Goal of Responsible Consumption and Production, it is designed streamline the recycling process where users can request waste pickups and contribute to a greener future by conveniently recycling their waste materials.
 
-## Table of Contents
-[Introduction](#introduction)
+## App Flow and Features
+The app offers the following features:
+- **Recycler Discovery**: Easily locate nearby recyclers on a map or in a list view.
+- **Request Pickup**: Initiate pickup requests for recyclable waste from selected recyclers.
+- **Recycler Response**: Recyclers can accept or reject pickup requests based on their availability.
+  ### App flow for waste producers
+  + New users can sign up using their email and create an account or sign in using their existing credentials.
+  + Waste producers can select a recycler that best suits their needs from a list of nearby options specializing in the type of waste they possess. Through the app's interface, they can effortlessly send requests to the recycler for waste pickup.
+  + Requests that are waiting for the recycler's response or accepted by the recycler are displayed under `Active Requests` in the `My Requests` page. Rejected requests and completed requests are displayed under `Archived Requests`.
+  ### App flow for recyclers
+  + Recyclers are asked for their preferred waste types and their respective prices upon signing up.
+  + New requests that have been made to the recycler are displayed on the `Home` page. They can either accept or reject the request.
+  + Pending requests and accepted requests are displayed under `Active Requests` in the `My Requests` page. Rejected requests and completed requests are displayed under `Archived Requests`.
 
-[Keywords](#keywords)
+- Users can edit their profile details in the `My Profile` page.
+- `Settings` page allows users to change their password, logout or delete their account.
 
-[App flow and Features](#app-flow-and-features)
+### Upcoming Features
 
-[Installation](#installation)
+- Integration of payment processing for waste producers and recyclers.
+- User ratings and reviews for recyclers.
 
-[Usage](#usage)
+## Setup Instructions
 
-[Technologies](#technologies)
+1. Clone the repository: `git clone https://github.com/myst9/waste-management-app.git`
+2. Install Android Studio and open the cloned repository folder.
+3. Android Studio will build the project and set up dependencies.
+4. Connect an Android device or use an emulator.
+5. Click the "Run" button in Android Studio to launch the app on a connected device/emulator.
 
-[Contributing](#contributing)
+## Report Issues
 
-[License](#license)
-
-## Introduction
-The `Waste Management App` project tries to connect waste collectors and waste producers.
-
-## Keywords
-- New Request - Means a waste producer has placed a request to process a type of waste, that needs to be accepted by the waste collectors
-- Active Request - the request currently active and needs to be finished
-- Archived Request - the history of requests that have been completed
-
-## App flow and Features
-+ The app starts up with logo and splash screen. Then it checks if there is a user logged in or not.
-+ If not it goes to Sign up page. You sign in by clicking `Signin Here`, if you already have an account.
-+ The app has a `Home`, `Requests`, `Profile` and `Settings` pages with navigation bar.
-    - Home page has welcome screen.
-    - Request page shows all the requests you have. And can make a new request if you a `Seller` tye user. Else, if you are a `Buyer` type user you can accept the requests posted to you.
-    - Profile page shows user details and is editable
-    - Settings page allows user to logout or delete their account
-+ The additional feature our app provides is that waste collectors have different waste types they process and waste producers can select a waste type they need to recycle/process and will only see those waste collectors that process that type of waste.
-
-## Installation
-
-Clone the repository: git clone https://github.com/myst9/waste-management-app.git
-Install Android studio and open the cloned repository
-In Build, select Build Bundles/APKs to create an APK  
-
-## Usage
-`Waste Collectors`:
-Log in and check requests 
-Accept requests
-`waste producers`:
-Login and place requests
-
-## Technologies
-Frontend: xml
-Backend: kotlin
-Database: FireBase firestore
-Authentication: FireBase 
-environment: Android studio
-
-## Contributing
-Contributions are welcome! To contribute to the Waste Management System project, follow these steps:
-Fork the repository.
-Create a new branch: git checkout -b feature-new-feature.
-Make your changes and commit them: git commit -m 'Add new feature'.
-Push to the branch: git push origin feature-new-feature.
-Open a pull request explaining your changes.
+If you encounter any problems or have suggestions, please open an issue. We value your input and will address your concerns as quickly as possible.
 
 ## License
 This project is licensed under the MIT License.
